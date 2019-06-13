@@ -1,0 +1,27 @@
+<h1>Libros</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Versión</th>
+      <th>Descripción</th>
+      <th>Fecha de Publicación</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @versions.each do |version| %>
+      <tr>
+        <td><%= version.title %></td>
+        <td><%= version.version %></td>
+        <td><%= version.description %></td>
+        <td><%= version.publication_date %></td>
+        <td>
+          <%= link_to "Mostrar", version %>
+          <%= link_to "Editar", edit_version_path(version) %>
+          <%= link_to "Eliminar", version, method: :delete, data: { confirm: "¿Estás seguro de eliminar este libro?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
